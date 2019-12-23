@@ -514,6 +514,8 @@ if [ "${AUTOSTART}" = "yes" ]; then
 		systemctl start plexmediaserver.service
 	elif hash service 2>/dev/null; then
 		service plexmediaserver start
+	elif hash supervisorctl 2>/dev/null; then
+		supervisorctl restart plex
 	elif [ -x /etc/init.d/plexmediaserver ]; then
 		/etc/init.d/plexmediaserver start
 	else
